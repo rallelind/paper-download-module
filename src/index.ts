@@ -1,24 +1,29 @@
 import { ComputeModule } from "@palantir/compute-module";
 import { Type } from "@sinclair/typebox";
+import { getResearchPaperPdf } from "./research-paper-download/getResearchPaperPdf";
+
+export interface GetResearchPaperPdfInput {
+  link: string;
+}
+
+export interface GetResearchPaperPdfOutput {
+  pdfContent: string;
+  filename: string;
+}
 
 const myModule = new ComputeModule({
   logger: console,
   definitions: {
-    sum: {
+    getResearchPaperPdf: {
       input: Type.Object({
-        a: Type.Number(),
-        b: Type.Number(),
+        link: Type.String(),
       }),
-      output: Type.String(),
-    },
-    hello: {
-      input: Type.Object({
-        name: Type.String(),
+      output: Type.Object({
+        pdfContent: Type.String(),
+        filename: Type.String(),
       }),
-      output: Type.String(),
     },
   },
 });
-myModule
-  .register("sum", async ({ a, b }) => String(a + b))
-  .register("hello", async ({ name }) => `Hello, ${name}!`);
+
+myModule.register("getResearchPaperPdf", getResearchPaperPdf);

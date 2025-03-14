@@ -10,7 +10,7 @@
     "author": "Rasmus Sommerlund Lind",
     "license": "MIT",
     "dependencies": {
-        "@palantir/compute-module": "latest",
+        "@palantir/compute-module": "0.2.7",
         "@sinclair/typebox": "^0.34.30",
         "esbuild": "^0.23.0"
     },
